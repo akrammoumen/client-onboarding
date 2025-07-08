@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Outfitters Onboarding Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e3ad55;
+            --primary-dark: #d0963a;
+            --primary-light: #f5d9ab;
+            --secondary: #3a506b;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: var(--secondary);
+            color: white;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .agency-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .header-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .header-text p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .client-logo-container {
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .client-logo {
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+        
+        .progress-container {
+            padding: 30px 40px 0;
+            background: white;
+        }
+        
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--light-gray);
+            z-index: 0;
+            transform: translateY(-50%);
+            border-radius: 10px;
+        }
+        
+        .progress-fill {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 6px;
+            background: var(--primary);
+            z-index: 1;
+            transform: translateY(-50%);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-step {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--gray);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .progress-step.completed {
+            border-color: var(--primary);
+            background: white;
+            color: var(--primary);
+        }
+        
+        .progress-step i {
+            font-size: 14px;
+            display: none;
+        }
+        
+        .progress-step.completed i {
+            display: block;
+        }
+        
+        .progress-step.completed span {
+            display: none;
+        }
+        
+        .step-label {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray);
+        }
+        
+        .progress-step.active .step-label {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .step-content {
+            padding: 30px 40px 40px;
+            display: none;
+        }
+        
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .step-header {
+            margin-bottom: 25px;
+        }
+        
+        .step-header h2 {
+            font-size: 28px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .step-header p {
+            color: var(--gray);
+            font-size: 17px;
+            max-width: 700px;
+        }
+        
+        .welcome-video {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin: 25px 0;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+        }
+        
+        .welcome-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(227, 173, 85, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-light);
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .skip-step {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 15px;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+        
+        .skip-step:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .smart-default {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .smart-default i {
+            color: var(--primary);
+            font-size: 20px;
+        }
+        
+        .thank-you {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .thank-you i {
+            font-size: 72px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .thank-you h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .thank-you p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .next-steps {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .next-steps li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .next-steps li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .join-slack {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2a3b52 100%);
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        
+        .join-slack h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .support-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(227, 173, 85, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .support-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(227, 173, 85, 0.5);
+        }
+        
+        .support-bubble i {
+            color: white;
+            font-size: 28px;
+        }
+        
+        .client-logo-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .logo-preview {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            overflow: hidden;
+            background: var(--light);
+        }
+        
+        .logo-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .email-collection {
+            background: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .email-collection input {
+            max-width: 400px;
+            margin: 10px auto;
+        }
+        
+        /* Admin Dashboard Styles */
+        .admin-section {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 30px 0;
+            border-top: 3px solid var(--primary);
+        }
+        
+        .admin-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .admin-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s;
+        }
+        
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .admin-card i {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .data-summary {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid var(--secondary);
+            background: var(--light);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .progress-bar {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .step-label {
+                top: 40px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .client-logo-container {
+                margin-top: 15px;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .client-logo {
+                max-width: 80px;
+                max-height: 80px;
+            }
+            
+            .admin-dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with logos -->
+        <div class="header">
+            <div class="logo-container">
+                <div class="agency-logo">
+                    <i class="fas fa-kitchen-set"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Kitchen Outfitters Onboarding</h1>
+                    <p>Streamlined setup for your marketing success</p>
+                </div>
+            </div>
+            <div class="client-logo-container" id="client-logo-display">
+                <img src="https://via.placeholder.com/100x100/e3ad55/ffffff?text=Your+Logo" alt="Client Logo" class="client-logo" id="client-logo-img">
+            </div>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+                <div class="progress-step active" data-step="1">
+                    <span>1</span>
+                    <i class="fas fa-check"></i>
+                    <div class="step-label">Welcome</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <span>2</span>
+                    <i class="fas fa-check"></i>
+                    <div class="step-label">Contract</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <span>3</span>
+                    <i class="fas fa-check"></i>
+                    <div class="step-label">Access</div>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <span>4</span>
+                    <i class="fas fa-check"></i>
+                    <div class="step-label">Survey</div>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <span>5</span>
+                    <i class="fas fa-check"></i>
+                    <div class="step-label">Booking</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 1: Welcome -->
+        <div class="step-content active" id="step1">
+            <div class="step-header">
+                <h2>Welcome to Your Marketing Journey!</h2>
+                <p>We're excited to partner with you to grow your kitchen outfitting business. Let's get started with a quick introduction.</p>
+            </div>
+            
+            <div class="welcome-video">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            
+            <div class="client-logo-upload">
+                <label for="client-logo">Upload your company logo</label>
+                <div class="logo-preview" id="logo-preview">
+                    <i class="fas fa-building" style="font-size: 48px; color: var(--gray);"></i>
+                </div>
+                <input type="file" id="client-logo" accept="image/*" style="display: none;">
+                <button class="btn btn-secondary" id="upload-logo-btn">
+                    <i class="fas fa-upload"></i> Upload Logo
+                </button>
+            </div>
+            
+            <div class="form-group">
+                <label for="expectations">What are your main goals for our partnership?</label>
+                <textarea id="expectations" placeholder="I want to increase leads for premium kitchen installations..."></textarea>
+            </div>
+            
+            <div class="smart-default">
+                <i class="fas fa-lightbulb"></i>
+                <div>Tip: Most successful kitchen outfitters aim for 20-30 qualified leads per month</div>
+            </div>
+            
+            <div class="btn-container">
+                <button class="btn next-btn" data-next="2">Continue to Contract <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Contract & Invoice -->
+        <div class="step-content" id="step2">
+            <div class="step-header">
+                <h2>Contract & Payment</h2>
+                <p>Review and sign our partnership agreement. If you've already completed this step, you can skip ahead.</p>
+            </div>
+            
+            <div class="form-group">
+                <label>Service Agreement</label>
+                <div style="height: 300px; border: 1px solid #eee; border-radius: 8px; padding: 20px; overflow-y: auto; margin-bottom: 20px;">
+                    <h3>Marketing Partnership Agreement</h3>
+                    <p>This agreement is made between [Your Company] and [Client's Company] for digital marketing services...</p>
+                    <!-- Contract content would go here -->
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Electronic Signature</label>
+                <input type="text" placeholder="Type your full name to sign" style="max-width: 400px;">
+            </div>
+            
+            <div class="smart-default">
+                <i class="fas fa-bolt"></i>
+                <div>Smart Default: Most clients choose our Premium Package for full-service marketing</div>
+            </div>
+            
+            <div class="btn-container">
+                <button class="btn next-btn" data-next="3">Sign & Continue <i class="fas fa-arrow-right"></i></button>
+                <button class="btn btn-secondary skip-btn" data-skip="3">I've Already Signed</button>
+            </div>
+            
+            <div class="skip-step" data-skip="3">Skip this step for now</div>
+        </div>
+        
+        <!-- Step 3: Access -->
+        <div class="step-content" id="step3">
+            <div class="step-header">
+                <h2>Account Access</h2>
+                <p>Securely provide access to your accounts so we can start optimizing your marketing.</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="company-name">Company Name</label>
+                <input type="text" id="company-name" placeholder="Elite Kitchen Designs">
+            </div>
+            
+            <div class="form-group">
+                <label for="website">Website URL</label>
+                <input type="url" id="website" placeholder="https://yourcompany.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="facebook">Facebook Page</label>
+                <input type="url" id="facebook" placeholder="https://facebook.com/yourpage">
+            </div>
+            
+            <div class="form-group">
+                <label for="instagram">Instagram Profile</label>
+                <input type="url" id="instagram" placeholder="https://instagram.com/yourprofile">
+            </div>
+            
+            <!-- رابط ClickUp -->
+            <div class="smart-default" id="clickup-integration">
+                <i class="fas fa-tasks"></i>
+                <div>
+                    Please join our ClickUp workspace for project management: 
+                    <a href="#" id="clickup-link" style="color: var(--primary); font-weight: 600;">Join ClickUp Workspace</a>
+                </div>
+            </div>
+            
+            <!-- جمع البريد الإلكتروني لدعوات سلاك وكليك أب -->
+            <div class="email-collection">
+                <h3><i class="fas fa-envelope"></i> Receive Slack & ClickUp Invitations</h3>
+                <p>We'll send your invitation links directly to your email:</p>
+                <input type="email" id="client-email" placeholder="your@email.com" style="text-align: center;">
+                <button class="btn" id="send-invites-btn">
+                    <i class="fas fa-paper-plane"></i> Send Invitations
+                </button>
+            </div>
+            
+            <div class="btn-container">
+                <button class="btn next-btn" data-next="4">Save & Continue <i class="fas fa-arrow-right"></i></button>
+                <button class="btn btn-secondary" id="save-later-btn">Save for Later</button>
+            </div>
+        </div>
+        
+        <!-- Step 4: Audience Survey -->
+        <div class="step-content" id="step4">
+            <div class="step-header">
+                <h2>Audience Survey</h2>
+                <p>Help us understand your ideal customers to create targeted campaigns.</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="customer-profile">Describe your ideal customer:</label>
+                <textarea id="customer-profile" placeholder="Homeowners aged 35-55, household income $150k+, planning a kitchen renovation..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="non-customer">Who is NOT your ideal customer?</label>
+                <textarea id="non-customer" placeholder="Renters, DIYers, those looking for quick fixes..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="brand-guidelines">Brand Guidelines (optional)</label>
+                <input type="file" id="brand-guidelines">
+            </div>
+            
+            <div class="smart-default">
+                <i class="fas fa-users"></i>
+                <div>Based on similar kitchen outfitters, your audience likely searches for "custom cabinets," "kitchen remodel," and "luxury appliances"</div>
+            </div>
+            
+            <div class="btn-container">
+                <button class="btn next-btn" data-next="5">Continue to Booking <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Step 5: Strategy Session -->
+        <div class="step-content" id="step5">
+            <div class="thank-you">
+                <i class="fas fa-calendar-check"></i>
+                <h2>You're All Set!</h2>
+                <p>Thank you for completing the onboarding process. We're excited to start working on your kitchen outfitting marketing strategy.</p>
+                
+                <div class="next-steps">
+                    <h3><i class="fas fa-clipboard-list"></i> What Happens Next</h3>
+                    <ul>
+                        <li>We'll review all the information you've provided</li>
+                        <li>Our team will prepare a customized marketing strategy</li>
+                        <li>You'll receive a welcome package with next steps</li>
+                        <li>We'll connect all your accounts to our monitoring systems</li>
+                    </ul>
+                </div>
+                
+                <!-- رابط Slack -->
+                <div class="join-slack">
+                    <h3><i class="fab fa-slack"></i> Join Our Client Slack Channel</h3>
+                    <p>Collaborate with our team and other kitchen business owners</p>
+                    <div class="btn-container" style="justify-content: center; margin-top: 20px;">
+                        <button class="btn" id="slack-btn" style="background: #4A154B;">
+                            <i class="fab fa-slack"></i> Join Slack Community
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- رابط Calendly -->
+                <div class="btn-container" style="justify-content: center; margin-top: 30px;">
+                    <button class="btn" id="book-btn">Book Your Strategy Call</button>
+                </div>
+                
+                <!-- رسالة تأكيد إرسال الدعوات -->
+                <div id="invite-confirmation" style="display: none; background: var(--primary-light); padding: 15px; border-radius: 8px; margin-top: 20px;">
+                    <i class="fas fa-check-circle" style="color: green; font-size: 24px;"></i>
+                    <p>Invitations to Slack and ClickUp have been sent to your email address!</p>
+                </div>
+                
+                <!-- ملخص البيانات المدخلة -->
+                <div class="data-summary">
+                    <h3><i class="fas fa-database"></i> Your Submission Summary</h3>
+                    <div id="data-summary-content"></div>
+                </div>
+                
+                <!-- لوحة تحكم المسؤول (للإدارة) -->
+                <div class="admin-section">
+                    <h3><i class="fas fa-user-shield"></i> Admin Dashboard</h3>
+                    <p>Access client management tools and analytics:</p>
+                    <div class="admin-dashboard">
+                        <div class="admin-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Client Management</h4>
+                            <p>Manage all your clients in one place</p>
+                        </div>
+                        <div class="admin-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Performance Analytics</h4>
+                            <p>Track campaign performance</p>
+                        </div>
+                        <div class="admin-card">
+                            <i class="fas fa-bell"></i>
+                            <h4>Notifications</h4>
+                            <p>Get alerts for new submissions</p>
+                        </div>
+                        <div class="admin-card">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Settings</h4>
+                            <p>Configure your onboarding portal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Support Bubble -->
+    <div class="support-bubble">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <!-- إشعارات المسؤول -->
+    <div class="notification" id="admin-notification">
+        <i class="fas fa-bell"></i> New client completed onboarding!
+    </div>
+    
+    <!-- Calendly JS -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // عناصر الصفحة
+            const stepContents = document.querySelectorAll('.step-content');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const progressFill = document.getElementById('progress-fill');
+            const nextButtons = document.querySelectorAll('.next-btn');
+            const skipButtons = document.querySelectorAll('.skip-btn, .skip-step');
+            const supportBubble = document.querySelector('.support-bubble');
+            const uploadLogoBtn = document.getElementById('upload-logo-btn');
+            const clientLogoInput = document.getElementById('client-logo');
+            const logoPreview = document.getElementById('logo-preview');
+            const clientLogoImg = document.getElementById('client-logo-img');
+            const clientLogoDisplay = document.getElementById('client-logo-display');
+            const bookBtn = document.getElementById('book-btn');
+            const slackBtn = document.getElementById('slack-btn');
+            const clickupLink = document.getElementById('clickup-link');
+            const sendInvitesBtn = document.getElementById('send-invites-btn');
+            const inviteConfirmation = document.getElementById('invite-confirmation');
+            const saveLaterBtn = document.getElementById('save-later-btn');
+            const adminNotification = document.getElementById('admin-notification');
+            const dataSummary = document.getElementById('data-summary-content');
+            
+            // الروابط المقدمة
+            const TAWKTO_ID = '68681c7e91bdae190d9ab362';
+            const CALENDLY_LINK = 'https://calendly.com/extramoumen/strategy-session';
+            const CLICKUP_LINK = 'https://app.clickup.com/invite-link';
+            const SLACK_LINK = 'https://slack.com/join-link';
+            
+            let currentStep = 1;
+            const totalSteps = 5;
+            
+            // تهيئة شريط التقدم
+            updateProgressBar();
+            
+            // تعيين الروابط في الصفحة
+            bookBtn.addEventListener('click', openCalendly);
+            slackBtn.addEventListener('click', openSlack);
+            clickupLink.href = CLICKUP_LINK;
+            
+            // وظائف التنقل بين الخطوات
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextStep = parseInt(this.getAttribute('data-next'));
+                    goToStep(nextStep);
+                });
+            });
+            
+            // وظائف التخطي
+            skipButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const skipToStep = parseInt(this.getAttribute('data-skip'));
+                    goToStep(skipToStep);
+                    
+                    // وضع علامة على الخطوة كمكتملة
+                    progressSteps[currentStep-1].classList.add('completed');
+                });
+            });
+            
+            // فتح الدردشة
+            supportBubble.addEventListener('click', openChat);
+            
+            // رفع الشعار
+            uploadLogoBtn.addEventListener('click', function() {
+                clientLogoInput.click();
+            });
+            
+            // معالجة رفع الشعار
+            clientLogoInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        // تحديث المعاينة
+                        logoPreview.innerHTML = `<img src="${e.target.result}" alt="Logo Preview">`;
+                        
+                        // تحديث شعار العميل في الرأس
+                        clientLogoImg.src = e.target.result;
+                        
+                        // إظهار شعار العميل في الرأس
+                        clientLogoDisplay.style.display = 'flex';
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+            
+            // إرسال دعوات سلاك وكليك أب
+            sendInvitesBtn.addEventListener('click', function() {
+                const email = document.getElementById('client-email').value;
+                if (validateEmail(email)) {
+                    // في بيئة حقيقية، هنا سيتم إرسال البريد الإلكتروني إلى الخادم
+                    // لعرض رسالة تأكيد للمستخدم
+                    inviteConfirmation.style.display = 'block';
+                    
+                    // إخفاء الزر بعد النقر
+                    this.style.display = 'none';
+                    
+                    setTimeout(() => {
+                        inviteConfirmation.style.display = 'none';
+                    }, 5000);
+                    
+                    // حفظ البريد الإلكتروني في قاعدة البيانات (محاكاة)
+                    saveToDatabase('client_email', email);
+                } else {
+                    alert('Please enter a valid email address');
+                }
+            });
+            
+            // حفظ التقدم للعودة لاحقاً
+            saveLaterBtn.addEventListener('click', function() {
+                saveProgress();
+                alert('Your progress has been saved. You can return anytime to complete the onboarding.');
+            });
+            
+            // الانتقال إلى خطوة محددة
+            function goToStep(step) {
+                // إخفاء جميع الخطوات
+                stepContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // إزالة النشاط من جميع خطوات التقدم
+                progressSteps.forEach(step => {
+                    step.classList.remove('active');
+                });
+                
+                // إظهار الخطوة الحالية
+                document.getElementById(`step${step}`).classList.add('active');
+                
+                // تعيين الخطوة الحالية
+                currentStep = step;
+                
+                // تحديث شريط التقدم
+                updateProgressBar();
+                
+                // وضع علامة على الخطوة الحالية كنشطة في شريط التقدم
+                progressSteps[step-1].classList.add('active');
+                
+                // وضع علامة على الخطوات السابقة كمكتملة
+                for (let i = 0; i < step-1; i++) {
+                    progressSteps[i].classList.add('completed');
+                }
+                
+                // عند الوصول إلى الخطوة الأخيرة
+                if (step === 5) {
+                    showDataSummary();
+                    showAdminNotification();
+                }
+            }
+            
+            // تحديث شريط التقدم
+            function updateProgressBar() {
+                const percentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+                progressFill.style.width = `${percentage}%`;
+            }
+            
+            // فتح Calendly
+            function openCalendly() {
+                Calendly.initPopupWidget({
+                    url: CALENDLY_LINK
+                });
+                return false;
+            }
+            
+            // فتح Slack
+            function openSlack() {
+                const email = document.getElementById('client-email').value;
+                if (email) {
+                    // في بيئة حقيقية، هنا سيتم إرسال دعوة سلاك
+                    window.open(SLACK_LINK, '_blank');
+                } else {
+                    alert('Please enter your email in Step 3 to receive the Slack invitation');
+                }
+            }
+            
+            // فتح ClickUp
+            function openClickUp(e) {
+                e.preventDefault();
+                const email = document.getElementById('client-email').value;
+                if (email) {
+                    // في بيئة حقيقية، هنا سيتم إرسال دعوة ClickUp
+                    window.open(CLICKUP_LINK, '_blank');
+                } else {
+                    alert('Please enter your email in Step 3 to receive the ClickUp invitation');
+                }
+            }
+            
+            // فتح دردشة Tawk.to
+            function openChat() {
+                if (typeof Tawk_API !== 'undefined') {
+                    Tawk_API.maximize();
+                }
+            }
+            
+            // التحقق من صحة البريد الإلكتروني
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            // حفظ البيانات في قاعدة البيانات (محاكاة)
+            function saveToDatabase(key, value) {
+                // في بيئة حقيقية، هنا سيتم إرسال البيانات إلى الخادم
+                console.log(`Saving to database: ${key} = ${value}`);
+                localStorage.setItem(key, value);
+            }
+            
+            // حفظ التقدم
+            function saveProgress() {
+                const progressData = {
+                    step: currentStep,
+                    companyName: document.getElementById('company-name').value,
+                    email: document.getElementById('client-email').value,
+                    // يمكنك إضافة المزيد من الحقول هنا
+                };
+                
+                localStorage.setItem('onboarding_progress', JSON.stringify(progressData));
+                console.log('Progress saved:', progressData);
+            }
+            
+            // عرض ملخص البيانات
+            function showDataSummary() {
+                const company = document.getElementById('company-name').value || 'Not provided';
+                const email = document.getElementById('client-email').value || 'Not provided';
+                const profile = document.getElementById('customer-profile').value.substring(0, 100) + '...' || 'Not provided';
+                
+                dataSummary.innerHTML = `
+                    <p><strong>Company:</strong> ${company}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Customer Profile:</strong> ${profile}</p>
+                `;
+            }
+            
+            // عرض إشعار للمسؤول
+            function showAdminNotification() {
+                adminNotification.style.display = 'block';
+                setTimeout(() => {
+                    adminNotification.style.display = 'none';
+                }, 5000);
+                
+                // في بيئة حقيقية، هنا سيتم إرسال إشعار إلى المسؤول
+                console.log('Admin notification: New client completed onboarding!');
+            }
+            
+            // تكامل Tawk.to
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            (function() {
+                var s1 = document.createElement("script"), 
+                    s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/' + TAWKTO_ID;
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+            
+            // محاولة استعادة التقدم المحفوظ
+            const savedProgress = localStorage.getItem('onboarding_progress');
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                if (progress.step) {
+                    goToStep(progress.step);
+                    if (progress.companyName) document.getElementById('company-name').value = progress.companyName;
+                    if (progress.email) document.getElementById('client-email').value = progress.email;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
