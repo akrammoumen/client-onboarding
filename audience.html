@@ -1,96 +1,63 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>استطلاع الجمهور | MOBEK MEDIA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audience Survey | MOBEK MEDIA</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-      body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #fdfdfc;
-        color: #1a1a1a;
-        padding: 2rem;
-        max-width: 800px;
-        margin: auto;
-      }
-      h1 {
-        color: #e3ad55;
-        font-size: 2rem;
-        text-align: center;
-      }
-      p {
-        text-align: center;
-        color: #555;
-        margin-bottom: 2rem;
-      }
-      .question {
-        background: #fff;
-        border-left: 5px solid #e3ad55;
-        padding: 1rem 1.5rem;
-        margin-bottom: 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      }
-      label {
-        font-weight: bold;
-        font-size: 1.1rem;
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-      textarea, input[type="email"] {
-        width: 100%;
-        padding: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        font-size: 1rem;
-        resize: vertical;
-      }
-      button {
-        display: block;
-        background-color: #e3ad55;
-        color: white;
-        font-weight: bold;
-        font-size: 1.1rem;
-        padding: 0.75rem 2rem;
-        margin: 2rem auto 0;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      }
-      button:hover {
-        background-color: #d99a42;
+      :root {
+        --mobek-gold: #e3ad55;
       }
     </style>
   </head>
-  <body>
-    <h1>🎯 جمهورك المثالي</h1>
-    <p>ساعدنا في فهم من نستهدفه بإعلاناتك لتحصل على نتائج أفضل.</p>
+  <body class="bg-gray-50 text-gray-800 min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-3xl w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
+      <h1 class="text-3xl font-bold mb-6 text-center text-gray-900">🎯 جمهورك المثالي</h1>
+      <p class="text-center mb-8 text-gray-600">ساعدنا في فهم من نستهدفه بإعلاناتك لتحصل على نتائج أفضل.</p>
 
-    <form action="https://formspree.io/f/xanbqzjl" method="POST">
+      <form action="https://formspree.io/f/xanbqzjl" method="POST" class="space-y-6">
+        <!-- سؤال 1 -->
+        <div>
+          <label for="ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
+            1. صف عميلك المثالي
+          </label>
+          <textarea id="ideal-client" name="ideal-client" rows="4" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="مثال: أصحاب منازل جدد يهتمون بالجودة والتصميم..."></textarea>
+        </div>
 
-      <div class="question">
-        <label for="ideal-client">1. صف عميلك المثالي</label>
-        <textarea id="ideal-client" name="ideal-client" rows="4" placeholder="مثال: أصحاب منازل جدد يهتمون بالجودة والتصميم..."></textarea>
+        <!-- سؤال 2 -->
+        <div>
+          <label for="not-ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
+            2. من العميل غير المناسب لك؟
+          </label>
+          <textarea id="not-ideal-client" name="not-ideal-client" rows="4" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="مثال: من يبحث عن أرخص خيار بسرعة كبيرة..."></textarea>
+        </div>
+
+        <!-- سؤال 3 -->
+        <div>
+          <label for="common-traits" class="block text-lg font-semibold mb-2 text-gray-800">
+            3. ما الصفات المشتركة بين عملائك الحاليين؟
+          </label>
+          <textarea id="common-traits" name="common-traits" rows="4" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="مثال: يأتون من توصيات، يفضلون الجودة، يعيشون في الضواحي..."></textarea>
+        </div>
+
+        <!-- زر الإرسال -->
+        <div class="text-center pt-4">
+          <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">
+            إرسال الإجابات
+          </button>
+        </div>
+      </form>
+
+      <!-- أزرار التنقل -->
+      <div class="flex justify-between items-center mt-8">
+        <a href="access.html" class="text-white bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-xl font-semibold shadow transition">
+          السابق
+        </a>
+        <a href="expectations.html" class="text-white bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-xl font-semibold shadow transition">
+          التالي
+        </a>
       </div>
-
-      <div class="question">
-        <label for="not-ideal-client">2. من العميل غير المناسب لك؟</label>
-        <textarea id="not-ideal-client" name="not-ideal-client" rows="4" placeholder="مثال: من يبحث عن أرخص خيار بسرعة كبيرة..."></textarea>
-      </div>
-
-      <div class="question">
-        <label for="common-traits">3. ما الصفات المشتركة بين عملائك الحاليين؟</label>
-        <textarea id="common-traits" name="common-traits" rows="4" placeholder="مثال: يأتون من توصيات، يفضلون الجودة، يعيشون في الضواحي..."></textarea>
-      </div>
-
-      <div class="question">
-        <label for="email">بريدك الإلكتروني (للتواصل إن لزم)</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" />
-      </div>
-
-      <button type="submit">إرسال الإجابات</button>
-    </form>
+    </div>
   </body>
 </html>
