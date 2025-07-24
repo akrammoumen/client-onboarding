@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOBEK MEDIA - Client Onboarding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { background: #fdfdfd; color: #1a1a1a; }
+    header { text-align: center; padding: 2rem 1rem; }
+    header img { max-width: 140px; }
+    .container { max-width: 700px; margin: auto; padding: 2rem 1rem; background: white; border-radius: 16px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); }
+    .progress { height: 12px; background: #eee; border-radius: 20px; margin-bottom: 2rem; overflow: hidden; }
+    .progress-bar { height: 100%; background: #e3ad55; width: 0%; transition: width 0.3s ease; }
+    section { display: none; }
+    section.active { display: block; }
+    h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    p { margin-bottom: 1rem; }
+    .btn { background: #e3ad55; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 12px; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .step-status { font-size: 0.9rem; margin-bottom: 1rem; color: #4caf50; }
+    footer { text-align: center; font-size: 0.9rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://yourdomain.com/path-to-logo.png" alt="Mobek Media Logo">
+  </header>
+  <div class="container">
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <section id="step1" class="active">
+      <h2>Welcome to MOBEK MEDIA</h2>
+      <p>In just a few guided steps, we’ll get everything ready to launch your campaigns smoothly.</p>
+      <iframe src="https://www.loom.com/embed/your-welcome-video" frameborder="0" allowfullscreen style="width:100%; height:300px; border-radius: 12px; margin-bottom: 1rem;"></iframe>
+      <button class="btn" onclick="nextStep()">Start</button>
+    </section>
+
+    <section id="step2">
+      <h2>Ad Account Access</h2>
+      <ul>
+        <li>✅ Facebook Business Access - <a href="https://business.facebook.com/settings/people/" target="_blank">Click here</a></li>
+        <li>✅ Pixel Setup - <a href="https://business.facebook.com/events_manager2/list/pixel/" target="_blank">Check Pixel</a></li>
+        <li>✅ Catalog (if available) - <a href="https://business.facebook.com/commerce/catalogs" target="_blank">Check Catalog</a></li>
+      </ul>
+      <button class="btn" onclick="nextStep()">Continue</button>
+    </section>
+
+    <section id="step3">
+      <h2>Audience Discovery</h2>
+      <p>Please take 2 minutes to fill out this quick form to help us understand your target customers.</p>
+      <a href="https://formspree.io/f/xanbqzjl" class="btn" target="_blank">Open Audience Survey</a>
+      <br><br>
+      <button class="btn" onclick="nextStep()">I’ve Completed the Survey</button>
+    </section>
+
+    <section id="step4">
+      <h2>Book Your Strategy Call</h2>
+      <p>Reserve a time that works best for you. We’ll review everything and build a winning plan together.</p>
+      <iframe src="https://calendly.com/extramoumen/strategy-session" style="width:100%; height:600px; border: none; border-radius: 12px;"></iframe>
+      <br><br>
+      <button class="btn" onclick="nextStep()">Finish</button>
+    </section>
+
+    <section id="step5">
+      <h2>You're All Set 🎉</h2>
+      <p>Thank you for completing the setup. Our team will review everything and see you soon on the strategy call.</p>
+      <p>Let’s grow your business together 🚀</p>
+    </section>
+  </div>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    function nextStep() {
+      document.getElementById(`step${currentStep}`).classList.remove("active");
+      currentStep++;
+      document.getElementById(`step${currentStep}`).classList.add("active");
+      document.getElementById("progressBar").style.width = `${((currentStep - 1) / (totalSteps - 1)) * 100}%`;
+    }
+  </script>
+
+  <!-- Tawk.to Chat -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1huh5mhsk';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+
+</body>
+</html>
