@@ -1,42 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Step 2: Access | MOBEK MEDIA</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grant Access – MOBEK MEDIA</title>
   <style>
-    :root { --mobek-gold: #e3ad55; }
-    .btn { background-color: var(--mobek-gold); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: bold; transition: background 0.3s ease; }
-    .btn:hover { background-color: #c28b32; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfc;
+      color: #1a1a1a;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .brand {
+      color: #e3ad55;
+      font-weight: bold;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    .card {
+      background-color: #fff;
+      border-left: 6px solid #e3ad55;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .copy-input {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 300px;
+      margin-right: 10px;
+    }
+    .copy-btn, button {
+      background-color: #e3ad55;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .copy-btn:hover, button:hover {
+      background-color: #d79a3e;
+    }
+    .video-toggle button {
+      background: none;
+      color: #e3ad55;
+      font-weight: bold;
+      border: none;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      margin-top: 1rem;
+      border: none;
+    }
   </style>
-</head>
-<body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-6">
-  <div class="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-md space-y-6 text-center">
-    <h1 class="text-xl font-bold">🔐 Step 2: Grant Access</h1>
-    <p>To run your campaigns effectively, we need access to your business assets.</p>
-    
-    <div class="space-y-4 text-left">
-      <a href="https://business.facebook.com/settings/people/..." class="btn block text-center">Share Business Manager</a>
-      <a href="https://business.facebook.com/events_manager2/..." class="btn block text-center">Pixel Access</a>
-      <a href="https://business.facebook.com/commerce/..." class="btn block text-center">Catalog Access (if available)</a>
-      <a href="https://business.facebook.com/settings/ad-accounts" class="btn block text-center">Ad Account Access</a>
-    </div>
-
-    <a href="audience.html" class="btn inline-block mt-6">Next →</a>
-    <div class="text-sm text-gray-500">Step 2 of 4</div>
-  </div>
-
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+  <script>
+    function copyToClipboard(id) {
+      const input = document.getElementById(id);
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Copied: " + input.value);
+    }
+    function toggleVideo(videoId) {
+      const el = document.getElementById(videoId);
+      el.classList.toggle("hidden");
+    }
+    function showPixelOption() {
+      document.getElementById("pixelHelp").classList.toggle("hidden");
+    }
   </script>
+</head>
+<body>
+  <h1>🔐 Grant Access – <span class="brand">MOBEK MEDIA</span></h1>  <div class="card">
+    <h2>📌 Which platforms do you want to advertise on?</h2>
+    <p>
+      <button>Meta</button>
+      <button>TikTok</button>
+      <button>Google</button>
+    </p>
+  </div>  <div class="card">
+    <h2>Meta Access</h2>
+    <div>
+      <p>1. Add us to your Business Manager:</p>
+      <input id="metaID" class="copy-input" value="123456789012345" readonly>
+      <button class="copy-btn" onclick="copyToClipboard('metaID')">Copy ID</button>
+      <div class="video-toggle">
+        <button onclick="toggleVideo('metaVideo1')">📺 Show Video Guide</button>
+        <div id="metaVideo1" class="hidden">
+          <iframe src=""></iframe>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>2. Add us to your Facebook Page + Ad Account</p>
+      <div class="video-toggle">
+        <button onclick="toggleVideo('metaVideo2')">📺 Show Video Guide</button>
+        <div id="metaVideo2" class="hidden">
+          <iframe src=""></iframe>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>3. Do you have a Pixel installed?</p>
+      <button onclick="showPixelOption()">No Pixel Installed</button>
+      <div id="pixelHelp" class="hidden">
+        <p>Please give us access to install the Pixel or provide your developer contact.</p>
+      </div>
+    </div>
+    <div>
+      <p>4. Do you have a Product Catalog?</p>
+      <button onclick="alert('We will request access if a catalog is available.')">Yes</button>
+    </div>
+    <div>
+      <p>5. Do you have a website or landing pages?</p>
+      <button onclick="alert('Please provide us with access or links to the website/pages.')">Send Access</button>
+    </div>
+  </div>  <div class="card">
+    <h2>TikTok Access</h2>
+    <div>
+      <p>1. Add us to your TikTok Business Center:</p>
+      <input id="tiktokID" class="copy-input" value="" readonly>
+      <button class="copy-btn" onclick="copyToClipboard('tiktokID')">Copy ID</button>
+      <div class="video-toggle">
+        <button onclick="toggleVideo('tiktokVideo1')">📺 Show Video Guide</button>
+        <div id="tiktokVideo1" class="hidden">
+          <iframe src=""></iframe>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>2. Pixel setup (optional)</p>
+      <button onclick="alert('We can help you install TikTok Pixel if needed.')">Request Help</button>
+    </div>
+  </div>  <div class="card">
+    <h2>Google Ads Access</h2>
+    <div>
+      <p>1. Invite us to your account:</p>
+      <input id="googleID" class="copy-input" value="ads@mobekmedia.com" readonly>
+      <button class="copy-btn" onclick="copyToClipboard('googleID')">Copy Email</button>
+      <div class="video-toggle">
+        <button onclick="toggleVideo('googleVideo1')">📺 Show Video Guide</button>
+        <div id="googleVideo1" class="hidden">
+          <iframe src=""></iframe>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>2. Do you have a website or landing pages?</p>
+      <button onclick="alert('Please provide us access to your website or pages.')">Send Access</button>
+    </div>
+  </div>
 </body>
 </html>
