@@ -1,49 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Step 3: Audience | MOBEK MEDIA</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-6">
-  <form action="https://formspree.io/f/xanbqzjl" method="POST" class="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-md space-y-4">
-    <h1 class="text-xl font-bold text-center">🎯 Step 3: Define Your Audience</h1>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>استطلاع الجمهور | MOBEK MEDIA</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fdfdfc;
+        color: #1a1a1a;
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+      }
+      h1 {
+        color: #e3ad55;
+        font-size: 2rem;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+      .question {
+        background: #fff;
+        border-left: 5px solid #e3ad55;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+      label {
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      textarea, input[type="email"] {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 1rem;
+        resize: vertical;
+      }
+      button {
+        display: block;
+        background-color: #e3ad55;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding: 0.75rem 2rem;
+        margin: 2rem auto 0;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      button:hover {
+        background-color: #d99a42;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎯 جمهورك المثالي</h1>
+    <p>ساعدنا في فهم من نستهدفه بإعلاناتك لتحصل على نتائج أفضل.</p>
 
-    <label class="block">
-      Who is your ideal customer?
-      <textarea name="ideal_customer" required class="w-full mt-1 p-2 border rounded"></textarea>
-    </label>
+    <form action="https://formspree.io/f/xanbqzjl" method="POST">
 
-    <label class="block">
-      Which locations do you serve?
-      <textarea name="locations" required class="w-full mt-1 p-2 border rounded"></textarea>
-    </label>
+      <div class="question">
+        <label for="ideal-client">1. صف عميلك المثالي</label>
+        <textarea id="ideal-client" name="ideal-client" rows="4" placeholder="مثال: أصحاب منازل جدد يهتمون بالجودة والتصميم..."></textarea>
+      </div>
 
-    <label class="block">
-      Any specific interests or behaviors to target?
-      <textarea name="interests" class="w-full mt-1 p-2 border rounded"></textarea>
-    </label>
+      <div class="question">
+        <label for="not-ideal-client">2. من العميل غير المناسب لك؟</label>
+        <textarea id="not-ideal-client" name="not-ideal-client" rows="4" placeholder="مثال: من يبحث عن أرخص خيار بسرعة كبيرة..."></textarea>
+      </div>
 
-    <label class="block">
-      Any notes or previous results?
-      <textarea name="notes" class="w-full mt-1 p-2 border rounded"></textarea>
-    </label>
+      <div class="question">
+        <label for="common-traits">3. ما الصفات المشتركة بين عملائك الحاليين؟</label>
+        <textarea id="common-traits" name="common-traits" rows="4" placeholder="مثال: يأتون من توصيات، يفضلون الجودة، يعيشون في الضواحي..."></textarea>
+      </div>
 
-    <button type="submit" class="btn block w-full text-center">Next →</button>
-    <div class="text-sm text-gray-500 text-center">Step 3 of 4</div>
-  </form>
+      <div class="question">
+        <label for="email">بريدك الإلكتروني (للتواصل إن لزم)</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" />
+      </div>
 
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
-</body>
+      <button type="submit">إرسال الإجابات</button>
+    </form>
+  </body>
 </html>
