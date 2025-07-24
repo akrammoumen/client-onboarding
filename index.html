@@ -1,44 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | MOBEK MEDIA</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome – MOBEK MEDIA</title>
   <style>
-    :root { --mobek-gold: #e3ad55; }
-    body { font-family: 'Segoe UI', sans-serif; }
-    .btn {
-      background-color: var(--mobek-gold);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s ease;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfc;
+      color: #1a1a1a;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
     }
-    .btn:hover { background-color: #c28b32; }
+    .brand {
+      color: #e3ad55;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .card {
+      background-color: #fff;
+      border-left: 6px solid #e3ad55;
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    ul, ol {
+      padding-left: 1.25rem;
+    }
+    .highlight {
+      color: #e3ad55;
+      font-weight: 600;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #e3ad55;
+      color: white;
+      font-weight: bold;
+      padding: 0.9rem 1.75rem;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #d89b3f;
+    }
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #e3ad55 25%, #f0f0f0 25%);
+      z-index: 999;
+    }
+    .step-label {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 1rem;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-6">
-  <div class="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-md text-center">
-    <h1 class="text-2xl font-bold mb-4">👋 Welcome to MOBEK MEDIA</h1>
-    <p class="mb-6">We're excited to help you grow with powerful ad campaigns tailored to your kitchen business.</p>
-    <div class="mb-6">
-      <iframe src="https://www.loom.com/embed/5b25d9da9eac431fbd95e7b60796eb6f" frameborder="0" allowfullscreen class="w-full h-64 rounded-lg shadow"></iframe>
-    </div>
-    <a href="access.html" class="btn inline-block">Start Setup →</a>
-    <div class="mt-4 text-sm text-gray-500">Step 1 of 4</div>
-  </div>
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
+<body>
+  <div class="progress"></div>
+  <div class="step-label">Step 1 of 4</div>  <h1>👋 Welcome to <span class="brand">MOBEK MEDIA</span>!</h1>
+  <p>We’re excited to help your kitchen business grow through high-performing paid ads. This setup journey will guide you through everything you need to get started—with zero hassle.</p>  <div class="card">
+    <h2>🔍 What to Expect</h2>
+    <p>Here’s what we’ll handle for you:</p>
+    <ul>
+      <li>✅ Launch and manage your campaigns on <strong>Meta, TikTok, and Google</strong>.</li>
+      <li>✅ Optimize performance daily to reduce costs and increase leads.</li>
+      <li>✅ Keep you informed with regular insights and reports.</li>
+    </ul>
+    <p>We’re here to turn your ad spend into a reliable stream of kitchen renovation leads — without guesswork, noise, or wasted time.</p>
+  </div>  <div class="card">
+    <h2>📬 Communication</h2>
+    <p>We stay in touch consistently so you're always informed:</p>
+    <ul>
+      <li>🎥 <strong>Two Loom videos per week</strong> showing progress, updates, and next steps.</li>
+      <li>📊 <strong>A weekly performance report</strong> delivered at the end of each week.</li>
+      <li>📞 <strong>Optional weekly Zoom call</strong> — schedule it anytime to review results or ask questions.</li>
+    </ul>
+    <p>Transparency and consistency are key — and you're always in control.</p>
+  </div>  <div class="card">
+    <h2>🚀 Setup Process</h2>
+    <p>This onboarding takes just a few minutes. You’ll:</p>
+    <ol>
+      <li>1️⃣ Grant us access to the needed ad accounts.</li>
+      <li>2️⃣ Answer 2–3 questions about your audience & goals.</li>
+      <li>3️⃣ Confirm key details so we can launch smoothly.</li>
+    </ol>
+    <p>You’ll see your progress as you go. Everything is fast and guided!</p>
+  </div><a href="access.html" class="btn">Get Started →</a>
+
+  <!-- Tawk.to Live Chat -->  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/68681c7e91bdae190d9ab362/1hsg3j7mj';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
     })();
-  </script>
-</body>
+  </script></body>
 </html>
