@@ -5,25 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Step 4: Book Call | MOBEK MEDIA</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --mobek-gold: #e3ad55;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-6">
-  <div class="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-md text-center space-y-6">
-    <h1 class="text-2xl font-bold">📞 Step 4: Book Your Strategy Call</h1>
-    <p>Let's discuss your goals and make sure everything is ready for launch!</p>
-    <iframe src="https://calendly.com/extramoumen/strategy-session" class="w-full h-96 rounded-lg shadow" frameborder="0"></iframe>
-    <p class="text-sm text-gray-500">✨ You're All Set! Thanks for completing your onboarding. Our team will review everything and come prepared to help you grow 🚀</p>
-    <div class="text-sm text-gray-500">Step 4 of 4</div>
+  <div class="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-200 space-y-6 text-center">
+    
+    <!-- العنوان -->
+    <h1 class="text-3xl font-bold text-gray-900">📞 الخطوة 4: إحجز مكالمتك الإستراتيجية</h1>
+    <p class="text-gray-600 text-base">دعنا نناقش أهدافك ونتأكد أن كل شيء جاهز للانطلاق!</p>
+
+    <!-- رابط الحجز -->
+    <iframe src="https://calendly.com/extramoumen/strategy-session" class="w-full h-96 rounded-xl shadow" frameborder="0"></iframe>
+
+    <!-- طلب الإيميل -->
+    <div class="text-left">
+      <label for="email" class="block text-lg font-semibold text-gray-800 mb-2">
+        بريدك الإلكتروني (لإرسال دعوات Slack وClickUp)
+      </label>
+      <input type="email" id="email" name="email" placeholder="you@example.com"
+        class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none">
+    </div>
+
+    <!-- زر الإنهاء -->
+    <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">
+      ✅ إنهاء الإعداد
+    </button>
+
+    <!-- رسالة ختامية -->
+    <div class="text-center text-gray-800 text-base pt-4 leading-relaxed">
+      🎉 شكرًا لك على إكمال كل خطوات الإعداد!  
+      <br>فريق <span class="font-semibold text-yellow-600">MOBEK MEDIA</span> سيقوم الآن بمراجعة إعداداتك والتأكد من جاهزيتك الكاملة.
+      <br>سيتم التواصل معك عبر Slack وClickUp، وسنبدأ تنفيذ حملتك في أقرب وقت 🚀
+    </div>
+
+    <!-- مؤشر التقدم -->
+    <div class="text-sm text-gray-400 pt-2">الخطوة 4 من 4</div>
   </div>
 
+  <!-- Tawk.to Chat -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
     })();
   </script>
 </body>
