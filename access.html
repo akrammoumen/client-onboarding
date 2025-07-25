@@ -103,16 +103,6 @@
     function showPixelOption() {
       document.getElementById("pixelHelp").classList.remove("hidden");
     }
-
-    // Submit progress to Google Sheets on load
-    window.onload = () => {
-      fetch('https://script.google.com/macros/s/AKfycbxpPQihYzSLjXcfgCnu-iOyFWU6aFkwPkF708lXi892KZ2e26U7oD7L_LCMPcKmQ0at/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ step: "Access", timestamp: new Date().toISOString() })
-      });
-    };
   </script>
 </head>
 <body>
@@ -190,14 +180,15 @@
 
   <!-- Tawk.to Chat Script -->
   <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
     })();
   </script>
 
