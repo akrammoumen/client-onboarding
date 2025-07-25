@@ -2,51 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Step 4: Book Call | MOBEK MEDIA</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --mobek-gold: #e3ad55;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-6">
-  <div class="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-200 space-y-6 text-center">
-    
-    <!-- العنوان -->
-    <h1 class="text-3xl font-bold text-gray-900">📞 الخطوة 4: إحجز مكالمتك الإستراتيجية</h1>
-    <p class="text-gray-600 text-base">دعنا نناقش أهدافك ونتأكد أن كل شيء جاهز للانطلاق!</p>
+  <div class="max-w-xl w-full bg-white p-10 rounded-2xl shadow-lg text-center space-y-6">
+    <h1 class="text-3xl font-bold text-yellow-600">📞 الخطوة 4: احجز مكالمتك الاستراتيجية</h1>
+    <p class="text-gray-700">لنناقش أهدافك ونتأكد من أن كل شيء جاهز للانطلاق!</p>
 
-    <!-- رابط الحجز -->
+    <!-- iframe -->
     <iframe src="https://calendly.com/extramoumen/strategy-session" class="w-full h-96 rounded-xl shadow" frameborder="0"></iframe>
 
-    <!-- طلب الإيميل -->
-    <div class="text-left">
-      <label for="email" class="block text-lg font-semibold text-gray-800 mb-2">
-        بريدك الإلكتروني (لإرسال دعوات Slack وClickUp)
-      </label>
-      <input type="email" id="email" name="email" placeholder="you@example.com"
-        class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none">
-    </div>
+    <!-- Form -->
+    <form id="finalForm" class="space-y-4">
+      <div>
+        <label for="email" class="block mb-2 text-sm font-semibold text-gray-800">بريدك الإلكتروني</label>
+        <input type="email" name="email" id="email" required placeholder="you@example.com"
+          class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none">
+      </div>
 
-    <!-- زر الإنهاء -->
-    <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">
-      ✅ إنهاء الإعداد
-    </button>
+      <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl transition shadow-md">
+        إنهاء الإعداد
+      </button>
+    </form>
 
-    <!-- رسالة ختامية -->
-    <div class="text-center text-gray-800 text-base pt-4 leading-relaxed">
-      🎉 شكرًا لك على إكمال كل خطوات الإعداد!  
-      <br>فريق <span class="font-semibold text-yellow-600">MOBEK MEDIA</span> سيقوم الآن بمراجعة إعداداتك والتأكد من جاهزيتك الكاملة.
-      <br>سيتم التواصل معك عبر Slack وClickUp، وسنبدأ تنفيذ حملتك في أقرب وقت 🚀
-    </div>
-
-    <!-- مؤشر التقدم -->
-    <div class="text-sm text-gray-400 pt-2">الخطوة 4 من 4</div>
+    <p class="text-sm text-gray-400">ستصلك دعوات Slack و ClickUp على هذا البريد.</p>
   </div>
 
-  <!-- Tawk.to Chat -->
+  <!-- إرسال إلى Google Sheets وتحويل -->
+  <script>
+    document.getElementById("finalForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzH443JGf1z0ggiUNAOX00HDVYpx3Z10REVZ-N14nlEDLG5kuo8CX9cVex7osboi-KK/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: new URLSearchParams({ "email": email })
+      })
+      .then(response => {
+        // ✅ إذا نجح الإرسال انتقل لصفحة الشكر
+        window.location.href = "thankyou.html";
+      })
+      .catch(error => {
+        alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+        console.error("Error!", error.message);
+      });
+    });
+  </script>
+
+  <!-- دعم Tawk.to -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
