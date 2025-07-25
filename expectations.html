@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Step 4: Book Call | MOBEK MEDIA</title>
+  <title>Step 4: Book Your Strategy Call | MOBEK MEDIA</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-6">
   <div class="max-w-xl w-full bg-white p-10 rounded-2xl shadow-lg text-center space-y-6">
     <h1 class="text-3xl font-bold text-yellow-600">📞 Step 4: Book Your Strategy Call</h1>
-    <p class="text-gray-700">Let's talk about your goals and ensure everything is ready to launch!</p>
+    <p class="text-gray-700">Let's discuss your goals and make sure everything is ready to launch!</p>
 
-    <!-- iframe -->
+    <!-- Calendly iframe -->
     <iframe src="https://calendly.com/extramoumen/strategy-session" class="w-full h-96 rounded-xl shadow" frameborder="0"></iframe>
 
-    <!-- Form -->
+    <!-- Email submission form -->
     <form id="finalForm" class="space-y-4">
       <div>
-        <label for="email" class="block mb-2 text-sm font-semibold text-gray-800">Your Email Address</label>
+        <label for="email" class="block mb-2 text-sm font-semibold text-gray-800">Your Email</label>
         <input type="email" name="email" id="email" required placeholder="you@example.com"
           class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none">
       </div>
@@ -28,10 +28,10 @@
       </button>
     </form>
 
-    <p class="text-sm text-gray-400">You'll receive Slack & ClickUp invitations via email.</p>
+    <p class="text-sm text-gray-400">You'll receive Slack & ClickUp invites at this email.</p>
   </div>
 
-  <!-- Send to Google Sheets and redirect -->
+  <!-- Send email to Google Sheets & redirect -->
   <script>
     document.getElementById("finalForm").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -44,10 +44,10 @@
         body: new URLSearchParams({ "email": email })
       })
       .then(response => {
-        window.location.href = "thankyou.html";
+        window.location.href = "thankyou.html"; // Redirect on success
       })
       .catch(error => {
-        alert("Something went wrong. Please try again.");
+        alert("There was an error submitting the form. Please try again.");
         console.error("Error!", error.message);
       });
     });
