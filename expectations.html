@@ -9,8 +9,8 @@
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-6">
   <div class="max-w-xl w-full bg-white p-10 rounded-2xl shadow-lg text-center space-y-6">
-    <h1 class="text-3xl font-bold text-yellow-600">📞 الخطوة 4: احجز مكالمتك الاستراتيجية</h1>
-    <p class="text-gray-700">لنناقش أهدافك ونتأكد من أن كل شيء جاهز للانطلاق!</p>
+    <h1 class="text-3xl font-bold text-yellow-600">📞 Step 4: Book Your Strategy Call</h1>
+    <p class="text-gray-700">Let's talk about your goals and ensure everything is ready to launch!</p>
 
     <!-- iframe -->
     <iframe src="https://calendly.com/extramoumen/strategy-session" class="w-full h-96 rounded-xl shadow" frameborder="0"></iframe>
@@ -18,49 +18,48 @@
     <!-- Form -->
     <form id="finalForm" class="space-y-4">
       <div>
-        <label for="email" class="block mb-2 text-sm font-semibold text-gray-800">بريدك الإلكتروني</label>
+        <label for="email" class="block mb-2 text-sm font-semibold text-gray-800">Your Email Address</label>
         <input type="email" name="email" id="email" required placeholder="you@example.com"
           class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:outline-none">
       </div>
 
       <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl transition shadow-md">
-        إنهاء الإعداد
+        Finish Setup
       </button>
     </form>
 
-    <p class="text-sm text-gray-400">ستصلك دعوات Slack و ClickUp على هذا البريد.</p>
+    <p class="text-sm text-gray-400">You'll receive Slack & ClickUp invitations via email.</p>
   </div>
 
-  <!-- إرسال إلى Google Sheets وتحويل -->
+  <!-- Send to Google Sheets and redirect -->
   <script>
     document.getElementById("finalForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const email = document.getElementById("email").value;
-      const scriptURL = "https://script.google.com/macros/s/AKfycbzH443JGf1z0ggiUNAOX00HDVYpx3Z10REVZ-N14nlEDLG5kuo8CX9cVex7osboi-KK/exec";
+      const scriptURL = "https://script.google.com/macros/s/AKfycbxpPQihYzSLjXcfgCnu-iOyFWU6aFkwPkF708lXi892KZ2e26U7oD7L_LCMPcKmQ0at/exec";
 
       fetch(scriptURL, {
         method: "POST",
         body: new URLSearchParams({ "email": email })
       })
       .then(response => {
-        // ✅ إذا نجح الإرسال انتقل لصفحة الشكر
         window.location.href = "thankyou.html";
       })
       .catch(error => {
-        alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+        alert("Something went wrong. Please try again.");
         console.error("Error!", error.message);
       });
     });
   </script>
 
-  <!-- دعم Tawk.to -->
+  <!-- Tawk.to chat bubble -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
       var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
       s1.async=true;
-      s1.src='https://embed.tawk.to/68681c7e91bdae190d9ab362/1htgk6qbg';
+      s1.src='https://embed.tawk.to/688393fc8beeee192b5d57c/1htgk6qbg';
       s1.charset='UTF-8';
       s1.setAttribute('crossorigin','*');
       s0.parentNode.insertBefore(s1,s0);
