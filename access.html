@@ -2,120 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grant Access – MOBEK MEDIA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Setup</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fffdf7;
-      color: #1a1a1a;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1 {
-      font-size: 2.2rem;
-      color: #e3ad55;
-      margin-bottom: 0.5rem;
-    }
-    p.description {
-      color: #444;
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
-    }
-    h2 {
-      margin-top: 2rem;
-      color: #333;
-      font-size: 1.5rem;
-    }
-    .card {
-      background-color: #ffffff;
-      border-left: 6px solid #e3ad55;
-      border-radius: 14px;
-      padding: 1.8rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-    }
-    .copy-input {
-      padding: 0.6rem;
-      width: 100%;
-      max-width: 320px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-top: 0.5rem;
-      margin-bottom: 0.8rem;
-    }
-    .copy-btn {
-      background-color: #e3ad55;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .copy-btn:hover {
-      background-color: #d79a3e;
-    }
-    .video-toggle button {
-      margin-top: 0.5rem;
-      background-color: #f4f4f4;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .video-toggle iframe {
-      margin-top: 12px;
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .hidden {
-      display: none;
-    }
-    .btn {
-      display: inline-block;
-      background-color: #e3ad55;
-      color: white;
-      font-weight: bold;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1rem;
-      margin-top: 2rem;
-      margin-right: 1rem;
-      transition: background 0.2s ease;
-    }
-    .btn:hover {
-      background-color: #d79a3e;
-    }
+    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; background: #f9f9f9; }
+    .card { background: white; border: 1px solid #ccc; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+    .copy-input { width: 200px; margin-right: 10px; }
+    .copy-btn { cursor: pointer; }
+    iframe { width: 100%; height: 315px; border-radius: 10px; margin-top: 15px; }
+    .step-link { display: inline-block; margin-top: 10px; background: #e3ad55; color: black; padding: 10px 14px; border-radius: 8px; font-weight: bold; text-decoration: none; }
+    .step-link:hover { background: #d9a347; }
+    .video-caption { margin-top: 5px; display: block; color: #555; font-size: 14px; }
   </style>
   <script>
     function copyToClipboard(id) {
       const copyText = document.getElementById(id);
-      copyText.select();
-      copyText.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(copyText.value);
-      alert("Copied: " + copyText.value);
-    }
-
-    function toggleVideo(id) {
-      const video = document.getElementById(id);
-      video.classList.toggle("hidden");
-    }
-
-    function showPixelOption() {
-      document.getElementById("pixelHelp").classList.remove("hidden");
     }
   </script>
 </head>
 <body>
-
-  <h1>🔐 Grant Access</h1>
-  <p class="description">Please follow the steps below to grant us access on Meta. We’ll use this to run and manage your campaigns effectively.</p>
 
   <div class="card">
     <h2>Meta Access</h2>
@@ -123,53 +30,38 @@
     <p><strong>1. Add us to your Business Manager:</strong></p>
     <input id="metaID" class="copy-input" value="123456789012345" readonly>
     <button class="copy-btn" onclick="copyToClipboard('metaID')">📋 Copy ID</button>
-    <div class="video-toggle">
-      <button onclick="toggleVideo('metaVideo1')">🎥 How to add us</button>
-      <div id="metaVideo1" class="hidden">
-        <iframe src="https://www.loom.com/embed/example-video-meta1?autoplay=0" allowfullscreen></iframe>
-      </div>
-    </div>
+    <a class="step-link" href="https://business.facebook.com/settings/partners" target="_blank">Go to Business Manager</a>
 
-    <p><strong>2. Add us to your Facebook Page + Ad Account:</strong></p>
-    <div class="video-toggle">
-      <button onclick="toggleVideo('metaVideo2')">🎥 How to add us</button>
-      <div id="metaVideo2" class="hidden">
-        <iframe src="https://www.loom.com/embed/example-video-meta2?autoplay=0" allowfullscreen></iframe>
-      </div>
-    </div>
+    <p><strong>2. Add us to your Page & Ad Account:</strong></p>
+    <a class="step-link" href="https://business.facebook.com/settings/pages" target="_blank">Page Settings</a>
+    <a class="step-link" href="https://business.facebook.com/settings/ad-accounts" target="_blank">Ad Account Settings</a>
 
-    <p><strong>3. Do you have a Pixel installed?</strong></p>
-    <button onclick="showPixelOption()">No Pixel Installed</button>
-    <div id="pixelHelp" class="hidden">
-      <p>Please give us access to install the Pixel or provide your developer’s contact info.</p>
-    </div>
+    <p><strong>3. Meta Pixel Access:</strong></p>
+    <a class="step-link" href="https://business.facebook.com/events_manager" target="_blank">Go to Events Manager</a>
+    <iframe src="https://www.loom.com/embed/pixel-guide" allowfullscreen></iframe>
+    <a class="video-caption" href="https://www.loom.com/share/pixel-guide" target="_blank">📎 Watch Pixel Setup Video</a>
 
-    <p><strong>4. Do you have a Product Catalog?</strong></p>
-    <button onclick="alert('We will request access if a catalog is available.')">Yes</button>
+    <p><strong>4. Product Catalog:</strong></p>
+    <p>No need to provide catalog access at this time.</p>
   </div>
 
   <div class="card">
     <h2>Website & Landing Pages</h2>
-    <p><strong>Please provide us with access to your website or any landing pages you're using:</strong></p>
-    <button onclick="alert('You can send us login credentials or access links.')">📤 Send Access</button>
+    <p>Please grant us access to your website or landing page platform:</p>
+
+    <iframe src="https://www.loom.com/embed/website-access-guide" allowfullscreen></iframe>
+    <a class="video-caption" href="https://www.loom.com/share/website-access-guide" target="_blank">📎 Watch Website Access Video</a>
+
+    <p><strong>Select your platform:</strong></p>
+    <a class="step-link" href="https://wordpress.com/" target="_blank">WordPress</a>
+    <a class="step-link" href="https://webflow.com/dashboard" target="_blank">Webflow</a>
+    <a class="step-link" href="https://unbounce.com/" target="_blank">Unbounce</a>
+    <a class="step-link" href="https://www.wix.com/dashboard" target="_blank">Wix</a>
+    <a class="step-link" href="https://www.shopify.com/admin" target="_blank">Shopify</a>
+
+    <p style="margin-top: 15px;">Alternatively, you can email access details to:</p>
+    <strong>akram@mobekmedia.site</strong>
   </div>
 
-  <a href="index.html" class="btn">⬅ Previous</a>
-  <a href="audience.html" class="btn">➡ Next</a>
-
-  <!-- Start of Tawk.to Script -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/688393fc8beeee192b5d57c/1htgk6qbg';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
-  <!-- End of Tawk.to Script -->
-
 </body>
-                                                                                      </html>
+</html>
