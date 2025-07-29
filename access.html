@@ -5,12 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Access Setup</title>
   <style>
-    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; background: #f9f9f9; }
-    .card { background: white; border: 1px solid #ccc; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
-    .copy-input { width: 200px; margin-right: 10px; }
-    .copy-btn { cursor: pointer; }
-    .step-link { display: inline-block; margin-top: 10px; background: #e3ad55; color: black; padding: 10px 14px; border-radius: 8px; font-weight: bold; text-decoration: none; }
-    .step-link:hover { background: #d9a347; }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    .copy-input {
+      width: 200px;
+      margin-right: 10px;
+    }
+    .copy-btn {
+      cursor: pointer;
+    }
+    .step-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: #e3ad55;
+      color: black;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .step-link:hover {
+      background: #d9a347;
+    }
     .video-btn {
       margin-top: 8px;
       background: #444;
@@ -56,12 +92,31 @@
       border-radius: 50%;
       cursor: pointer;
     }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .nav-buttons a {
+      background: #e3ad55;
+      color: black;
+      border: none;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .nav-buttons a:hover {
+      background: #d9a347;
+    }
   </style>
 </head>
 <body>
 
+  <h1>Grant Us Access in Just a Few Steps</h1>
+
   <!-- Meta Access -->
-  <div class="card">
+  <div id="step-meta" class="card">
     <h2>Meta Access</h2>
 
     <!-- Step 1 -->
@@ -88,7 +143,7 @@
   </div>
 
   <!-- Website Access -->
-  <div class="card">
+  <div id="step-website" class="card">
     <h2>Website & Landing Pages</h2>
     <p>Please grant us access to your website or landing page platform.</p>
     <button class="video-btn" onclick="openPopup('https://www.loom.com/embed/website-access-guide')">📺 Watch Website Access</button>
@@ -102,6 +157,12 @@
 
     <p style="margin-top: 15px;">Alternatively, you can email access details to:</p>
     <strong>akram@mobekmedia.site</strong>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="#step-meta">⬅ Previous</a>
+    <a href="#step-website">Next ➡</a>
   </div>
 
   <!-- Video Popup -->
